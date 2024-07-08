@@ -1,14 +1,22 @@
+import mongoose, { Types } from "mongoose";
+
 export interface ITask {
+    _id?: string;
+    userId: string | ObjectIdMongoose;
     title: string;
-    details: string;
+    details?: string;
     startDate: Date;
     duration: Date;
     level: number;
-    location: number[];
+    location?: string;
+    alert: boolean;
     active: boolean;
-    repeat: boolean;
     repeatType: string;
-    repeatWeekDays: string
+    repeatWeekDays?: string
     alertVoice: boolean;
     readDetails: boolean;
 }
+
+export type ObjectIdMongoose = {
+    _id: Types.ObjectId;
+};
