@@ -18,8 +18,8 @@ const taskSchema = new Schema<ITask>({
         type: Date,
         required: true
     },
-    duration: {
-        type: Date,
+    durationMinutes: {
+        type: Number,
         required: true
     },
     level: {
@@ -54,6 +54,8 @@ const taskSchema = new Schema<ITask>({
         type: Boolean,
         default: false
     }
+}, {
+    timestamps: true
 });
 
 export const taskModel = mongoose.model<ITask>("Tasks", taskSchema);

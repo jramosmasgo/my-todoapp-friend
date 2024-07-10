@@ -6,7 +6,7 @@ export interface ITask {
     title: string;
     details?: string;
     startDate: Date;
-    duration: Date;
+    durationMinutes: number;
     level: number;
     location?: string;
     alert: boolean;

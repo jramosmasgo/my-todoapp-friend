@@ -7,7 +7,6 @@ const ErrorMiddleware = (
     res: Response,
     _next: NextFunction
 ) => {
-    console.log("Error:", err);
     new ResponseApi({
         code: err.statusCode ?? 500,
         message: err.message,
