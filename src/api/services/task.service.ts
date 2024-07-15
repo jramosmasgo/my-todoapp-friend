@@ -9,6 +9,6 @@ export const getTasksByUserIdService = async (userId: string) => await getTasksB
 
 export const getTaskByIdService = async (id: string) => await getTaskByFieldData({ _id: id });
 
-export const getTaskByUserService = async (userId: string, date: Date) =>
-    await getTasksByFieldData({ userId, active: true, startDate: { $gte: `${new Date(date)}` } })
+export const getTaskByUserService = async (userId: string) =>
+    await getTasksByFieldData({ userId, active: true })
 

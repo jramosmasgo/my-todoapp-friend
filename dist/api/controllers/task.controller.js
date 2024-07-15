@@ -38,7 +38,7 @@ exports.updateTaskController = updateTaskController;
 const getTaskByIdController = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const taskFounded = yield (0, index_1.getTaskByIdService)(req.params.taskId);
-        new response_core_1.default({ data: taskFounded, action: "updateUser", code: 200 }).sendResponse(res);
+        new response_core_1.default({ data: taskFounded, action: "get specific task", code: 200 }).sendResponse(res);
     }
     catch (error) {
         next(error);
@@ -47,8 +47,8 @@ const getTaskByIdController = (req, res, next) => __awaiter(void 0, void 0, void
 exports.getTaskByIdController = getTaskByIdController;
 const getTaskByUserController = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const tasksFounded = yield (0, index_1.getTaskByUserService)(req.params.userId, req.body.date);
-        new response_core_1.default({ data: tasksFounded, action: "updateUser", code: 200 }).sendResponse(res);
+        const tasksFounded = yield (0, index_1.getTaskByUserService)(req.params.userId);
+        new response_core_1.default({ data: tasksFounded, action: "get tasks", code: 200 }).sendResponse(res);
     }
     catch (error) {
         next(error);

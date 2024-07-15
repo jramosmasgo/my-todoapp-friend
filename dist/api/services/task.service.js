@@ -19,5 +19,5 @@ const getTasksByUserIdService = (userId) => __awaiter(void 0, void 0, void 0, fu
 exports.getTasksByUserIdService = getTasksByUserIdService;
 const getTaskByIdService = (id) => __awaiter(void 0, void 0, void 0, function* () { return yield (0, index_1.getTaskByFieldData)({ _id: id }); });
 exports.getTaskByIdService = getTaskByIdService;
-const getTaskByUserService = (userId, date) => __awaiter(void 0, void 0, void 0, function* () { return yield (0, index_1.getTasksByFieldData)({ userId, active: true, startDate: { $gte: `${new Date(date)}` } }); });
+const getTaskByUserService = (userId) => __awaiter(void 0, void 0, void 0, function* () { return yield (0, index_1.getTasksByFieldData)({ userId, active: true }); });
 exports.getTaskByUserService = getTaskByUserService;

@@ -24,7 +24,7 @@ export const updateTaskController = async (req: Request<{ taskId: string }, {}, 
 export const getTaskByIdController = async (req: Request<{ taskId: string }, {}, {}>, res: Response, next: NextFunction) => {
     try {
         const taskFounded = await getTaskByIdService(req.params.taskId);
-        new ResponseApi<ITask>({ data: taskFounded, action: "updateUser", code: 200 }).sendResponse(res);
+        new ResponseApi<ITask>({ data: taskFounded, action: "get specific task", code: 200 }).sendResponse(res);
     } catch (error) {
         next(error)
     }
@@ -32,8 +32,8 @@ export const getTaskByIdController = async (req: Request<{ taskId: string }, {},
 
 export const getTaskByUserController = async (req: Request<{ userId: string }, {}, { date: Date }>, res: Response, next: NextFunction) => {
     try {
-        const tasksFounded = await getTaskByUserService(req.params.userId, req.body.date);
-        new ResponseApi<ITask[]>({ data: tasksFounded, action: "updateUser", code: 200 }).sendResponse(res);
+        const tasksFounded = await getTaskByUserService(req.params.userId);
+        new ResponseApi<ITask[]>({ data: tasksFounded, action: "get tasks", code: 200 }).sendResponse(res);
     } catch (error) {
         next(error)
     }
