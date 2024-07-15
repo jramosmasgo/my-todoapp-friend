@@ -4,12 +4,12 @@ import { Router } from "express";
 
 const router = Router();
 
-router.post('/', [tokenValidation, createTaskController]);
+router.post('/', [createTaskController]);
 
-router.put('/:taskId', [tokenValidation, updateTaskController]);
+router.put('/:taskId', [updateTaskController]);
 
-router.get('/:taskId', [tokenValidation, getTaskByIdController])
+router.get('/:taskId', [getTaskByIdController])
 
-router.get('/user/:userId', [tokenValidation, getTaskByUserController]);
+router.get('/user/:userId', [getTaskByUserController]);
 
 export default router;
