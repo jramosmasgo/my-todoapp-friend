@@ -1,6 +1,6 @@
 import ResponseApi from "@core/response.core";
 import { ITask } from "@interfaces/index";
-import { createTaskService, getTaskByIdService, getTaskByUserService, updateTaskByIdService } from "@services/index";
+import { createTaskService, getTaskByIdService, getTaskByUserService, getTasksByDateService, updateTaskByIdService } from "@services/index";
 import { Response, Request, NextFunction } from "express";
 
 export const createTaskController = async (req: Request<{}, {}, ITask>, res: Response, next: NextFunction) => {
@@ -34,6 +34,15 @@ export const getTaskByUserController = async (req: Request<{ userId: string }, {
     try {
         const tasksFounded = await getTaskByUserService(req.params.userId);
         new ResponseApi<ITask[]>({ data: tasksFounded, action: "get tasks", code: 200 }).sendResponse(res);
+    } catch (error) {
+        next(error)
+    }
+}
+
+export const getTaskByDateController = async (req: Request<{ userId: string }, {}, { date: Date }>, res: Response, next: NextFunction) => {
+    try {
+        const tasksFounded = await getTasksByDateService(req.params.userId, req.body.date);
+        new ResponseApi<ITask[]>({ data: tasksFounded, action: "get tasks by date", code: 200 }).sendResponse(res);
     } catch (error) {
         next(error)
     }
